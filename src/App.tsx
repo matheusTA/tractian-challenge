@@ -1,6 +1,11 @@
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./lib/react-query";
+
 function App() {
   return (
-    <div className="mr-1 flex flex-1 justify-center items-center">hello</div>
+    <QueryClientProvider client={queryClient}>
+      <div className="flex flex-1 justify-center items-center">hello</div>
+    </QueryClientProvider>
   );
 }
 
