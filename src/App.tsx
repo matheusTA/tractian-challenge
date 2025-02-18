@@ -2,6 +2,7 @@ import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { AssetFilterSelect } from "./components/asset-filter-select";
 import { Header } from "./components/header";
 import { GripVertical } from "lucide-react";
+import { AssetFilterText } from "./components/asset-filter-text";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
               defaultSize={25}
               minSize={15}
             >
-              <div>Assets list</div>
+              <AssetFilterText />
             </Panel>
 
             <PanelResizeHandle className="flex w-3 items-center justify-center">
