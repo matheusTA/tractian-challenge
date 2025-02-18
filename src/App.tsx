@@ -4,10 +4,9 @@ import { Header } from "./components/header";
 import { GripVertical } from "lucide-react";
 import { AssetFilterText } from "./components/asset-filter-text";
 import { AssetTreeList } from "./components/asset-tree-list";
-import { useAssetTreeSelectedStore } from "./store/asset-tree-selected";
+import { AssetTreeItemDeteils } from "./components/asset-tree-item-details";
 
 function App() {
-  const { assetTreeSelected } = useAssetTreeSelectedStore();
   return (
     <div className="flex flex-col h-screen w-full overflow-hidden">
       <Header />
@@ -18,7 +17,7 @@ function App() {
         <div className="flex flex-1 overflow-hidden">
           <PanelGroup direction="horizontal" className="">
             <Panel
-              className="flex flex-1 flex-col border border-zinc-100 rounded-sm  overflow-hidden"
+              className="flex flex-1 flex-col border border-zinc-100 rounded-sm overflow-hidden"
               order={1}
               minSize={15}
               defaultSize={30}
@@ -32,11 +31,11 @@ function App() {
             </PanelResizeHandle>
 
             <Panel
-              className="border border-zinc-100 rounded-sm"
+              className="flex flex-1 border border-zinc-100 rounded-sm overflow-hidden"
               order={2}
               minSize={50}
             >
-              <div className="">Asset details: {assetTreeSelected?.name}</div>
+              <AssetTreeItemDeteils />
             </Panel>
           </PanelGroup>
         </div>
