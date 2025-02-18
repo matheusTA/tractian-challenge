@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { useAsset } from "./useAsset";
-import { useLocation } from "./useLocation";
+import { useAssetQuery } from "./use-asset-query";
+import { useLocationQuery } from "./use-location-query";
 import { buildAssetTree } from "../utils/build-tree";
 
 export const useBuildAssetsTree = () => {
@@ -8,12 +8,12 @@ export const useBuildAssetsTree = () => {
     data: locations,
     isLoading: loadingLocations,
     error: errorLocations,
-  } = useLocation();
+  } = useLocationQuery();
   const {
     data: assets,
     isLoading: loadingAssets,
     error: errorAssets,
-  } = useAsset();
+  } = useAssetQuery();
 
   const isLoading = loadingLocations || loadingAssets;
   const error = errorLocations || errorAssets;

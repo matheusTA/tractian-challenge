@@ -1,12 +1,12 @@
 import { Building2 } from "lucide-react";
 import logo from "../assets/logo.svg";
-import { useCompany } from "../hooks/useCompany";
+import { useCompanyQuery } from "../hooks/use-company-query";
 import { useComapnySelectedStore } from "../store/company-selected";
 import { Button } from "./ui/button";
 
 export function Header() {
   const { companySelected, setCompany } = useComapnySelectedStore();
-  const { data } = useCompany();
+  const { data } = useCompanyQuery();
 
   function isSelected(companyId: string) {
     return companySelected?.id === companyId;

@@ -4,7 +4,7 @@ import { QUERY_PATHS } from "../shared/constants/query-paths";
 import { CompanyService } from "../services/company";
 import { useComapnySelectedStore } from "../store/company-selected";
 
-export const useAsset = (options?: UseQueryOptions<Asset[], Error>) => {
+export const useAssetQuery = (options?: UseQueryOptions<Asset[], Error>) => {
   const { companySelected } = useComapnySelectedStore();
 
   return useQuery<Asset[], Error>({

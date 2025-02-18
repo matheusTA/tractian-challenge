@@ -4,7 +4,9 @@ import { QUERY_PATHS } from "../shared/constants/query-paths";
 import { CompanyService } from "../services/company";
 import { useComapnySelectedStore } from "../store/company-selected";
 
-export const useCompany = (options?: UseQueryOptions<Company[], Error>) => {
+export const useCompanyQuery = (
+  options?: UseQueryOptions<Company[], Error>
+) => {
   const { setCompany } = useComapnySelectedStore();
 
   return useQuery<Company[], Error>({

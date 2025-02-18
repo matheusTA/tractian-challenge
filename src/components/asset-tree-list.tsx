@@ -1,4 +1,4 @@
-import { useBuildAssetsTree } from "../hooks/useBuildAssetTree";
+import { useBuildAssetsTree } from "../hooks/use-build-asset-tree";
 import { AssetTreeItem } from "./asset-tree-item";
 
 export function AssetTreeList() {
