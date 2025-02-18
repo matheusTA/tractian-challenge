@@ -13,7 +13,7 @@ export function Header() {
   }
 
   return (
-    <header className="w-full flex items-center justify-between p-4 bg-blue-950">
+    <header className="w-full h-14 flex items-center justify-between p-4 bg-blue-950">
       <img src={logo} alt="" />
 
       <div className="flex items-center gap-4">

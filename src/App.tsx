@@ -3,6 +3,7 @@ import { AssetFilterSelect } from "./components/asset-filter-select";
 import { Header } from "./components/header";
 import { GripVertical } from "lucide-react";
 import { AssetFilterText } from "./components/asset-filter-text";
+import { AssetTreeList } from "./components/asset-tree-list";
 
 function App() {
   return (
@@ -15,12 +16,13 @@ function App() {
         <div className="flex flex-1 overflow-hidden">
           <PanelGroup direction="horizontal" className="">
             <Panel
-              className="border border-zinc-100 rounded-sm"
+              className="flex flex-1 flex-col border border-zinc-100 rounded-sm  overflow-hidden"
               order={1}
-              defaultSize={25}
               minSize={15}
+              defaultSize={30}
             >
               <AssetFilterText />
+              <AssetTreeList />
             </Panel>
 
             <PanelResizeHandle className="flex w-3 items-center justify-center">
