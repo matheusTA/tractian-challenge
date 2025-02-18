@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AssetTree } from "../shared/types/asset-tree";
 import { ChevronDown, ChevronUp, Zap } from "lucide-react";
 import { useAssetTreeSelectedStore } from "../store/asset-tree-selected";
 import { assetTreeStatusIcon } from "../shared/constants/asset-tree-status-icon";
 import { assetTreeItemIcon } from "../shared/constants/asset-tree-item-icon";
+import { useAssetFilterStore } from "../store/asset-filter";
 
 interface AssetTreeItemProps {
   assetTree: AssetTree;
 }
 
 export function AssetTreeItem({ assetTree }: AssetTreeItemProps) {
+  const { filterText, isEnergySensorSelected, isCriticalSelected } =
+    useAssetFilterStore();
   const [isOpen, setIsOpen] = useState(false);
   const { assetTreeSelected, setAssetTreeSelected } =
     useAssetTreeSelectedStore();
 
   const isAssetTreeSensorTypeEnergy = assetTree.sensorType === "energy";
   const isAssetTreeSelected = assetTreeSelected?.id === assetTree.id;
+  const hasAnyFilter =
+    filterText || isEnergySensorSelected || isCriticalSelected;
 
   const expandedIcon = isOpen ? (
     <ChevronDown className="size-4" />
@@ -32,8 +37,18 @@ export function AssetTreeItem({ assetTree }: AssetTreeItemProps) {
       setAssetTreeSelected(assetTree);
     }
 
-    setIsOpen((prev) => !prev);
+    if (!hasAnyFilter) {
+      setIsOpen((prev) => !prev);
+    }
   }
+
+  useEffect(() => {
+    if (hasAnyFilter) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }, [hasAnyFilter]);
 
   return (
     <div
@@ -41,7 +56,8 @@ export function AssetTreeItem({ assetTree }: AssetTreeItemProps) {
       className="flex flex-col gap-1 px-1 rounded-sm data-[is-component-select=true]:bg-zinc-100"
     >
       <div
-        className="flex items-center gap-1 hover:cursor-pointer"
+        data-is-disabled={hasChildren(assetTree) && hasAnyFilter}
+        className="flex items-center gap-1 hover:cursor-pointer hover:bg-zinc-100 data-[is-disabled=true]:hover:cursor-not-allowed"
         onClick={handleSelectAssetTree}
       >
         {hasChildren(assetTree) && <div>{expandedIcon}</div>}
