@@ -1,6 +1,7 @@
 import { Asset } from "../shared/schemas/asset";
 import { Location } from "../shared/schemas/location";
 import { AssetTree } from "../shared/types/asset-tree";
+import { AssetFilterState } from "../store/asset-filter";
 
 export function buildAssetTree(
   locations: Location[],
@@ -55,4 +56,41 @@ export function buildAssetTree(
   });
 
   return assetTree;
+}
+
+export function filterAssetTree(
+  assetsTree: AssetTree[],
+  { filterText, isCriticalSelected, isEnergySensorSelected }: AssetFilterState
+): AssetTree[] {
+  if (!filterText && !isCriticalSelected && !isEnergySensorSelected) {
+    return assetsTree;
+  }
+
+  function applyFilters(node: AssetTree): AssetTree | null {
+    const matchesFilterText = filterText
+      ? node.name.toLowerCase().includes(filterText.toLowerCase())
+      : true;
+
+    const matchesCritical = isCriticalSelected ? node.status === "alert" : true;
+
+    const matchesEnergySensor = isEnergySensorSelected
+      ? node.sensorType === "energy"
+      : true;
+
+    const matches = matchesFilterText && matchesCritical && matchesEnergySensor;
+
+    const filteredChildren = node.children
+      .map(applyFilters)
+      .filter((child): child is AssetTree => child !== null);
+
+    if (matches || filteredChildren.length > 0) {
+      return { ...node, children: filteredChildren };
+    }
+
+    return null;
+  }
+
+  return assetsTree
+    .map(applyFilters)
+    .filter((node): node is AssetTree => node !== null);
 }

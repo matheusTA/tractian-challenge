@@ -1,15 +1,20 @@
 import { create } from "zustand";
 
-interface AssetFilterState {
+export type AssetFilterState = {
   isEnergySensorSelected: boolean;
   isCriticalSelected: boolean;
   filterText: string;
+};
+
+type AssetFilterActions = {
   toggleIsEnergySensorSelected: () => void;
   toggleIsCriticalSelected: () => void;
   setFilterText: (value: string) => void;
-}
+};
 
-export const useAssetFilterStore = create<AssetFilterState>()((set) => ({
+export const useAssetFilterStore = create<
+  AssetFilterState & AssetFilterActions
+>()((set) => ({
   isEnergySensorSelected: false,
   isCriticalSelected: false,
   filterText: "",
