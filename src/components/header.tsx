@@ -5,7 +5,8 @@ import { useComapnySelectedStore } from "../store/company-selected";
 import { Button } from "./ui/button";
 
 export function Header() {
-  const { companySelected, setCompany } = useComapnySelectedStore();
+  const { companySelected, setCompanySelected: setCompany } =
+    useComapnySelectedStore();
   const { data } = useCompanyQuery();
 
   function isSelected(companyId: string) {

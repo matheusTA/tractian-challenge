@@ -7,7 +7,7 @@ import { useComapnySelectedStore } from "../store/company-selected";
 export const useCompanyQuery = (
   options?: UseQueryOptions<Company[], Error>
 ) => {
-  const { setCompany } = useComapnySelectedStore();
+  const { setCompanySelected: setCompany } = useComapnySelectedStore();
 
   return useQuery<Company[], Error>({
     queryKey: [QUERY_PATHS.GET_ALL_COMPANIES],
