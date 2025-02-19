@@ -15,10 +15,11 @@ export function AssetFilterSelect() {
   return (
     <div className="flex items-center justify-between py-3">
       <div>
-        <span className="font-semibold text-xl text-gray-950">Ativos</span>
-        <span className="font-normal text-xl text-gray-600">
-          {" "}
-          / {companySelected?.name}
+        <span className="font-semibold text-xl text-gray-950">
+          Ativos /{" "}
+          <span className="font-normal text-xl text-gray-600">
+            {companySelected?.name}
+          </span>
         </span>
       </div>
 
