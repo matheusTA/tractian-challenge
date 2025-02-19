@@ -6,6 +6,10 @@ For more information about the challenge, visit the [link](https://tractian.com/
 
 ## 📺 Project demonstration
 
+
+https://github.com/user-attachments/assets/1ac40a9d-38d0-42f3-8f52-d19cd5a6d680
+
+
 ## 🚀 Technologies used
 
 - **React** + **TypeScript**
