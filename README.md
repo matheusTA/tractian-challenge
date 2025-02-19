@@ -2,13 +2,11 @@
 
 This repository contains the solution for the **Tractian Challenge**, a technical challenge for the **Senior Software Engineer Front-End** position.
 
-For more information about the challenge, visit the [link](https://tractian.com/en):
+For more information about the challenge, visit the [link](https://github.com/tractian/challenges/blob/main/front-end/README.md):
 
 ## 📺 Project demonstration
 
-
 https://github.com/user-attachments/assets/1ac40a9d-38d0-42f3-8f52-d19cd5a6d680
-
 
 ## 🚀 Technologies used
 
